@@ -1,0 +1,9 @@
+.row{
+    background-color: rgb(0, 0, 0);
+    font-size: 15px;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 2px -2px 5px black ;
+}

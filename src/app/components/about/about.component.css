@@ -1,0 +1,26 @@
+.row{
+    padding: 25px;
+}
+
+img{
+    border-radius: 75%;
+    position: relative;
+}
+
+div{
+    background-color: rgb(224, 215, 215);
+    text-align: center;
+}
+
+#nombre{
+    margin-top: 50px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+
+@media (max-width : 575px){
+    #profile{
+        margin-top: -250px;
+    }
+}
