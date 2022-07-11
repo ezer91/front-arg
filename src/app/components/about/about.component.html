@@ -1,15 +1,52 @@
-<div class="row">
-        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
-            <img class= "img-fluid" id="profile" src="../../../assets/logos/perfil.jpg">
-        </div>
-        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-            <p id="nombre">Reina, Ezequiel Martin</p>
-            <p>Full Stack Developer Jr</p>
-        </div>
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            <span>
-                <h1>Acerca de mí</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia cumque molestias unde beatae, culpa odit voluptates veritatis magni ipsam tempore, hic soluta sit, rerum fuga? Ut natus eos totam a.</p>
-            </span>
+<!--<div class="row">
+
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <img class="img-fluid" id="profile" src="../../../assets/logos/perfil.jpg">
+    </div>
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <h1 id="nombre">Reina, Ezequiel Martin</h1>
+        <p>Full Stack Developer Jr</p>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+        <span>
+            <h2>Acerca de mí</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia cumque molestias unde beatae, culpa odit
+                voluptates veritatis magni ipsam tempore, hic soluta sit, rerum fuga? Ut natus eos totam a.</p>
+        </span>
+    </div>
+</div>-->
+
+<section class="card m-3 p-2">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <H2 class="card-title d-flex align-items-center justify-content-start m-2 col">Acerca de</H2>
+            <a type="button" class=" d-flex align-items-center justify-content-end col-1 m-1 mb-1" (click)="editarTexto()">
+                <i class="bi-pencil bi-solid"></i>
+            </a>
         </div>
     </div>
+    <div class="container-fluid" *ngFor="let AcercaDe of acercaDe">
+        <p class="card-text m-2 mt-0 d-flex align-items-center justify-content-start">{{AcercaDe.texto}}</p>
+   
+
+    <div class="card mt-4" *ngIf="formVisibility" >
+        <div class="card-body">
+            <div class="card-title">
+                Editar texto
+            </div>
+            <form (ngSubmit)="onSubmit(AcercaDe)">
+                <div class="form-group">
+                    <input type="text" 
+                    [(ngModel)]="AcercaDe.texto"
+                    name="texto"
+                    placeholder="Editar texto"
+                    class="form-control">
+                </div>
+                <button type="submit"  class="btn btn-primary mt-2">
+                    Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</section>

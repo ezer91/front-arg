@@ -4,9 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { LogoAPComponent } from './components/logo-ap/logo-ap.component';
-import { SocialmediaComponent } from './components/socialmedia/socialmedia.component';
-import { BannerComponent } from './components/banner/banner.component';
 import { AboutComponent } from './components/about/about.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { FormationComponent } from './components/formation/formation.component';
@@ -14,41 +11,42 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistrarseComponent } from './components/registrarse/registrarse.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './services/interceptor.service';
+import { NavBarComponent } from './components/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LogoAPComponent,
-    SocialmediaComponent,
-    BannerComponent,
     AboutComponent,
     ExperienceComponent,
     FormationComponent,
     SkillsComponent,
     ProjectsComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    PortfolioComponent,
+    RegistrarseComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
 
-    NgCircleProgressModule.forRoot({
-      "backgroundGradient": true,
-      "backgroundColor": "#ffffff",
-      "backgroundGradientStopColor": "#c0c0c0",
-      "backgroundPadding": -10,
-      "radius": 60,
-      "maxPercent": 100,
-      "outerStrokeWidth": 10,
-      "outerStrokeColor": "#61A9DC",
-      "innerStrokeWidth": 0,
-      "subtitleColor": "#444444",
-      "animationDuration": 800,
-      "showInnerStroke": false,
-      "startFromZero": false
-    })
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

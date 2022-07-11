@@ -1,26 +1,17 @@
-.row{
-    padding: 25px;
+section{
+    background-color: rgba(14, 13, 13, 0.06); 
+    border: solid #fde6d8 0.2px;
+    box-shadow: inset 0px 0px 10px 0px #2317c0,0px 0px 5px 0px #2317c0, 0px 20px 40px 0px #beb9ff2c;
+    z-index: 1;
 }
-
-img{
-    border-radius: 75%;
-    position: relative;
-}
-
-div{
-    background-color: rgb(224, 215, 215);
-    text-align: center;
-}
-
-#nombre{
-    margin-top: 50px;
-    font-weight: bolder;
-    font-size: larger;
-}
-
-
-@media (max-width : 575px){
-    #profile{
-        margin-top: -250px;
+@media (max-width:700px) {
+    
+    h2{
+        font-size: 18px;
     }
+
+    p{
+        font-size: 14px;
+    }
+    
 }

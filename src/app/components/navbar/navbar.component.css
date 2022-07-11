@@ -1,0 +1,63 @@
+i {
+    color: rgb(248, 250, 252);
+    font-size: 20px;
+    margin: 12px;
+}
+
+button {
+    width: auto;
+    height: 40px;
+    font-size: 0;
+    margin: 10px;
+    border: transparent;
+    background-color: red;
+    border-radius: 5px;
+    font-stretch: center;
+
+}
+
+button:hover {
+    background-color: red;
+    border: transparent;
+    font-size: 16px;
+    font-style: italic;
+}
+
+
+#barraDeNav {
+    background: #00000096;
+    border-bottom: 0.5px solid rgba(226, 228, 255, 0.87);
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+    height: 80px;
+    
+}
+
+
+@media (max-width:800px) {
+    i {
+        font-size: 16px;
+    }
+
+    button {
+        width: auto;
+        height: 40px;
+        font-size: 0;
+        margin: 10px;
+        border: transparent;
+        background-color: red;
+    }
+
+    button:hover {
+        background-color: red;
+        border: transparent;
+        font-size: 16px;
+        font-style: italic;
+    }
+
+    img {
+        width: 60px;
+        object-fit: fill;
+    }
+}

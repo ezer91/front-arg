@@ -1,8 +1,23 @@
-.row{
-    background-color: rgb(224, 215, 215);
-    padding: 20px;
+#foto{
+    width: 18px;
+    height: 18px;
 }
-
-div{
-    padding: 15px;
+section{
+    background-color: rgba(0, 0, 0, 0.06); 
+    border: solid #fde6d8 0.2px;
+    box-shadow: inset 0px 0px 10px 0px #2317c0,0px 0px 5px 0px #2317c0, 0px 20px 40px 0px #beb9ff2c;
+    z-index: 1;
+}
+@media (max-width:700px) {
+    
+    h2{
+        font-size: 18px;
+    }
+    h3{
+        font-size: 16px;
+    }
+    p{
+        font-size: 12px;
+    }
+    
 }

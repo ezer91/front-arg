@@ -1,59 +1,185 @@
-<div class="row">
-    <div>
-        <h1 class="text-center">Hard & Soft skills</h1>
+<section class="card m-3 p-2">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <H2 class="col d-flex align-items-center justify-content-start m-2">Hard skills & soft skills</H2>
+            <a  type="button" class=" d-flex align-items-center justify-content-end col-1 m-2" (click)="onOpenModal('add')">
+                <i class="bi bi-plus-square"></i>
+            </a>
+        </div>
     </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4" >
-        <circle-progress [percent]="50" [imageSrc]="'/assets/iconos/CSS.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
+    <div  id="main-container">
+        <ul class="container-fluid align-items-center justify-content-center m-2" *ngFor="let Skills of skills">
+            <div class="row">
+                <h3 class="m-2 col-6">{{Skills.nombreSkill}} </h3>
+            </div>
+            <li class="list-group-item d-flex align-items-center justify-content-center m-2">    
+                <div class="row w-100">
+                    <div class="col-9 m-2">
+                        <p>{{Skills.porcentaje}}%</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-success align-items-center" role="progressbar"
+                                [style.width.%]="Skills.porcentaje" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <!--botones de edición-->
+                    <div class="col-2">
+                        <a type="button" class="" (click)="onOpenModal('edit',Skills)"><i class="bi-pencil bi-solid"></i></a>
+                        <a type="button" class="" (click)="onOpenModal('delete',Skills)"><i class="bi-x-square bi-solid"></i></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="60" [imageSrc]="'/assets/iconos/html.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
+</section>
+
+<!-- Modal añadir proyectos-->
+<div class="modal fade" id="addSkillsModal" tabindex="-1" role="dialog" aria-labelledby="addSkillsModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSkillsModalLabel">Añadir Skills</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"> &times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #addForm="ngForm" (ngSubmit)="onAddSkills(addForm)">
+
+                    <div class="form-group">
+                        <label for="nombreSkill">Skill</label>
+                        <input type="text" ngModel name="nombreSkill" class="form-control"
+                            aria-describedby="nombre de Skill" placeholder="Nombre del skill" required />
+                    </div>
+                    <input type="hidden" ngModel name="idskill" class="form-control" placeholder="" />
+                    <div class="form-group">
+                        <label for="fotoSkill">foto</label>
+                        <input type="text" ngModel name="fotoSkill" class="form-control" placeholder="url de la foto"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <label for="porcentaje">nivel en porcentaje</label>
+                        <input type="number" ngModel name="porcentaje" class="form-control"
+                            placeholder="nivel en porcentaje" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-skills-form" class="btn btn-secondary" data-dismiss="modal">
+                            cerrar
+                        </button>
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-Primary">
+                            Añadir Skill
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="40" [imageSrc]="'/assets/iconos/js.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
+</div>
+
+<!-- editar modal -->
+<div 
+data-tonggle="modal"
+data-target="#editSkillsModal"
+class="modal fade" 
+id="editSkillsModal" 
+tabindex="-1" 
+role="dialog" 
+aria-labelledby="editSkillsModalLabel"
+aria-hidden="true"
+>
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editSkillsModalLabel">Editar Skill
+                    {{editarSkills?.nombreSkill}}
+                </h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"> &times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #editForm="ngForm">
+
+                        <div class="form-group">
+                            <label for="nombreSkill">Nombre de la skill</label>
+                            <input type="text" ngModel="{{ editarSkills?.nombreSkill }}" name="nombreSkill" class="form-control" id="nombreSkill"
+                            aria-describedby="Nombre de la skill" placeholder="Nombre de la skill"/>
+                        </div>
+                        <input type="hidden" ngModel="{{ editarSkills?.idSkill}}" name="idSkill" class="form-control" id="idSkill" placeholder=""/>
+                        <div class="form-group">
+                            <label for="fotoSkill">Foto</label>
+                            <input type="text" ngModel="{{ editarSkills?.fotoSkill }}" name="fotoSkill" class="form-control" id="fotoSkill"
+                                placeholder="url de la foto"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="porcentaje">nivel en porcentaje</label>
+                            <input type="text" ngModel="{{ editarSkills?.porcentaje }}" name="porcentaje" class="form-control" id="porcentaje"
+                                placeholder="nivel en porcentaje"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="add-skills-form" class="btn btn-secondary"
+                                data-dismiss="modal">
+                                cerrar
+                            </button>
+                            <button type="submit" (click)="onUpdateSkills(editForm.value)" class="btn btn-Primary" data-dismiss="modal">
+                                Añadir cambios
+                            </button>
+                        </div>
+
+                </form>
+            </div>
     </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="20" [imageSrc]="'/assets/iconos/git.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
+</div>
+</div>
+
+<!-- delete modal -->
+
+<div 
+data-bs-tonggle="modal fade"
+data-bs-target="#deleteModelLabel"
+class="modal" 
+id="deleteSkillsModal" 
+tabindex="-1" 
+role="dialog" 
+aria-labelledby="deleteModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteSkillsModalLabel">Borrar Skills
+                </h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"> &times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Estas seguro de que quieres eliminar?
+                    {{ deleteSkills?.nombreSkill }}?
+                </p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">
+                                No
+                            </button>
+                            <button type="button" (click)="onDeleteSkills(deleteSkills!.idSkill)" class="btn btn-danger"
+                            data-dismiss="modal">
+                                Si
+                            </button>
+                        </div>
+            </div>
     </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="75" [imageSrc]="'/assets/iconos/eng.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
-    </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="70" [imageSrc]="'/assets/iconos/grupal.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
-    </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="70" [imageSrc]="'/assets/iconos/angular.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
-    </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="50" [imageSrc]="'/assets/iconos/java.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
-    </div>
-    <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <circle-progress [percent]="55" [imageSrc]="'/assets/iconos/bootstrap.png'" [showImage]="true" [imageWidth]="80" [imageHeight]="80" [radius]="80" [outerStrokeWidth]="10" [title]="'HTML'" [showUnits]="false"
-            [innerStrokeWidth]="2" [outerStrokeColor]="'black'" [innerStrokeColor]="''" [animation]="true"
-            [animationDuration]="600">
-        </circle-progress>
+</div>
+</div>
+
+<!-- alerta no hay educaciones -->
+<div *ngIf="skills?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">No hay Skills</h4>
+        <p>Skills no encontradas</p>
     </div>
 </div>

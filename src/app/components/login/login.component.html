@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<section>
+  <div class="colour"></div>
+  <div class="colour"></div>
+  <div class="colour"></div>
+  <div class="box">
+    <div class="square" style="--i:0;"></div>
+    <div class="square" style="--i:1;"></div>
+    <div class="square" style="--i:2;"></div>
+    <div class="square" style="--i:3;"></div>
+    <div class="square" style="--i:4;"></div>
+    <div class="container">
+      <div class="form">
+        <div class="card">
+          <div class="card-header">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" routerLink="/login">Iniciar Sesión</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/registrarse">Crear Cuenta</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+              <div class="form-group" class="input__box">
+                <label for="nombreUsuario">Nombre de Usuario</label>
+                <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
+                  [(ngModel)]="nombreUsuario" required>
+              </div>
+              <div class="form-group" class="input__box">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password"
+                  required>
+              </div>
+              <br>
+              <div class="form-group" class="input__box">
+                <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+                  <i class="fas fa-sign-in-alt"></i> Iniciar</button>
+              </div>
+            </form>
+            <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Error en el login: {{errMsj}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

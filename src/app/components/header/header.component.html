@@ -1,7 +1,39 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <div class="container-fluid">
-      <app-logo-ap></app-logo-ap>
-    <app-socialmedia></app-socialmedia>
+<!--Encabezado -->
+<section class="card  m-3">
+  
+  <div *ngFor="let Persona of personas" class="" id="datosPersonales">
+<img [src]="Persona.banner" class="m-2" alt="Programación Full Stack" id="banner">
+  <a type="button" id= "bannerEdit"class="" (click)="editarBanner()">
+    <a><i class="bi-pencil bi-solid"></i></a>
+  </a>
+    <div class="borde">
+      <img [src]="Persona.fotoPerfil" id="FotoDePerfil" class="col-auto img-responsive rounded-circle"  alt="">
+      <a type="button" class="" (click)="editarFoto()">
+        <a><i class="bi-pencil bi-solid"></i></a>
+      </a>
     </div>
-  </nav>
-  <app-banner></app-banner>
+
+    <!-- modal de edicion-->
+    <div *ngIf="formVisibility">
+      <form (ngSubmit)="onSubmit(Persona)">
+        <input type="text" [(ngModel)]="Persona.fotoPerfil" name="imagen" placeholder="URL de la imagen"
+          class="form-control">
+        <button type="submit" class="btn m-1 btn-primary">
+          Guardar Foto de Perfil
+        </button>
+      </form>
+    </div>
+    <div *ngIf="formVisibility2">
+      <form (ngSubmit)="onSubmit2(Persona)">
+        <input type="text" [(ngModel)]="Persona.banner" name="banner" placeholder="URL de la imagen"
+          class="form-control">
+        <button type="submit" class="btn m-1 btn-primary">
+          Guardar Banner
+        </button>
+      </form>
+    </div>
+
+    <H1 class="card-title m-2 mt-0">{{Persona.nombre}} {{Persona.apellido}}</H1>
+    <H5 class="m-2 mt-0">{{Persona.titulo}}</H5>
+  </div>
+</section>

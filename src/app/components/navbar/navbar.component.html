@@ -1,0 +1,31 @@
+<div class="container-fluid navbar-dark bg-dark " id="barraDeNav">
+  <div class="row align-items-center">
+    <div class="col " href="#">
+      <img src="../../../assets/logos/APLogo.png" alt="" width="120" height="39" class="align-text-center mt-2">
+      <p class="text-light inline-block" style="font-size: 10px;">#YoProgramo</p>
+    </div>
+    <div class="col">
+      <div class="position-absolute top-50 start-50 translate-middle">
+        <a href="" class="" target="_blank">
+          <i class="bi bi-github col sticky-sm-top"></i>
+        </a>
+        <a href="" target="_blank" class="mr-2">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a href="" target="_blank" class="mr-2">
+          <i class="bi bi-linkedin"></i>
+        </a>
+      </div>
+    </div>
+    <div class="col  ">
+      <div class="position-absolute top-0 end-0">
+        <button type="button" *ngIf="!isLogged" style= "background-color: green" class="text-center m-3 " routerLink="/login" id="boton">Login <i
+            class="bi bi-box-arrow-in-left sticky-sm-top" alt="login"></i>
+        </button>
+        <button type="button" id="boton" class="text-center m-3" *ngIf="isLogged" (click)="onLogOut()">Cerrar Sesion <i
+            class="bi bi-box-arrow-in-right sticky-sm-top" alt="loginOut"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
