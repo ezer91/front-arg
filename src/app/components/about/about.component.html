@@ -1,7 +1,7 @@
 <section class="card m-3 p-2">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <H2 class="card-title d-flex align-items-center justify-content-start m-2 col">Acerca de</H2>
+            <H2 class="card-title d-flex align-items-center justify-content-start m-2 col">Sobre mi:</H2>
             <a type="button" class=" d-flex align-items-center justify-content-end col-1 m-1 mb-1" (click)="editarTexto()">
                 <i class="bi-pencil bi-solid"></i>
             </a>
@@ -19,11 +19,7 @@
             </div>
             <form (ngSubmit)="onSubmit(AcercaDe)">
                 <div class="form-group">
-                    <input type="text" 
-                    [(ngModel)]="AcercaDe.texto"
-                    name="texto"
-                    placeholder="Editar texto"
-                    class="form-control">
+                    <input type="text" [(ngModel)]="AcercaDe.texto" name="texto" placeholder="Editar texto" class="form-control">
                 </div>
                 <button type="submit"  class="btn btn-primary mt-2">
                     Guardar

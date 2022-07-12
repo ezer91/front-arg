@@ -2,6 +2,10 @@ section{
     border: transparent;
     z-index: 1;
     background: transparent;
+    color: white;
+}
+i{
+    color: white;
 }
 
 #cancelar{

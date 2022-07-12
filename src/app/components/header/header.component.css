@@ -9,15 +9,16 @@
 }
 #banner{
     width: stretch;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
     border-radius: 5px 5px 0px 0px;
-    box-shadow: -1px -1px -10px #ff9355b0;
-    border: solid #474747ef 1px;
+    box-shadow: -1px -1px -10px #000000b0;
+    border: solid #fffcfcef 1px;
 }
 #bannerEdit{
     float: right;
     margin-right: 10px;
+    
 }
 
 #datosPersonales{
@@ -46,4 +47,6 @@ section{
     border-color: transparent;
     z-index: 1;
     background: transparent;
+    color: white;
+    font-style: bold;
 }

@@ -6,6 +6,7 @@
 
 i{
     color:#e7e7e7;
+    margin: 5px;
 }
 @media (max-width:700px) {
     #logoExperiencia{
@@ -25,10 +26,12 @@ section{
     border: transparent;
     z-index: 1;
     background: transparent;
+    color: white;
 }
 
 li{
     border: transparent;
     background: transparent;
     margin: 10px;
+    color: white;
 }

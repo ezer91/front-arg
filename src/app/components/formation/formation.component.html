@@ -1,7 +1,7 @@
 <section class="card m-3 p-2">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <H2 class="col d-flex align-items-center justify-content-start m-2">Educación</H2>
+            <H2 class="col d-flex align-items-center justify-content-start m-2">Formacion</H2>
             <a type="button"class="d-flex align-items-center justify-content-end col-1 m-3" (click)="onOpenModal('add')">
                 <i class="bi bi-plus-square"></i>
             </a>
@@ -11,7 +11,7 @@
         <ul class="container-fluid mt-3 mb-3"  *ngFor="let Educacion of educaciones">
             <li class="list-group-item align-self-center m-2">
                 <div class="row align-items-center">
-                    <img [src]="Educacion.imgEdu" class="col-3 img-responsive" id="imgEdu1" alt="Universidad de Buenos Aires">
+                    <img [src]="Educacion.imgEdu" class="col-3 img-responsive" id="imgEdu1" alt="">
                     <div class="col-7 text-center">
                         <H2>{{Educacion.tituloEdu}}</H2>
                         <p>{{Educacion.fechaEdu}} {{Educacion.descEdu}}</p>
@@ -22,7 +22,7 @@
                         class="" 
                         (click)="onOpenModal('edit',Educacion)"
                         >
-                        <i class="bi-pencil bi-solid"></i>
+                        <i id="edit"class="bi-pencil bi-solid"></i>
                         </a>
                         <a type="button" 
                         class="" 

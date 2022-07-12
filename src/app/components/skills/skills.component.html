@@ -1,7 +1,7 @@
 <section class="card m-3 p-2">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <H2 class="col d-flex align-items-center justify-content-start m-2">Hard skills & soft skills</H2>
+            <H2 class="col d-flex align-items-center justify-content-start m-2">Hard & soft skills</H2>
             <a  type="button" class=" d-flex align-items-center justify-content-end col-1 m-2" (click)="onOpenModal('add')">
                 <i class="bi bi-plus-square"></i>
             </a>
@@ -10,6 +10,7 @@
     <div  id="main-container">
         <ul class="container-fluid align-items-center justify-content-center m-2" *ngFor="let Skills of skills">
             <div class="row">
+                <img [src]="Skills.fotoSkill" class="col-3 img-responsive" id="imgSkills" alt="">
                 <h3 class="m-2 col-6">{{Skills.nombreSkill}} </h3>
             </div>
             <li class="list-group-item d-flex align-items-center justify-content-center m-2">    
