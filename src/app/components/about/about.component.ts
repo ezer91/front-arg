@@ -52,7 +52,10 @@ export class AboutComponent implements OnInit {
   editarTexto(){
     console.log("llama a la funcion")
     this.formVisibility=true;
-  }
+  }  
 
+  cerrar(){
+    this.formVisibility=false;
     
+  }
 }

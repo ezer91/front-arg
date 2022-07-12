@@ -2,11 +2,15 @@
     width: 18px;
     height: 18px;
 }
-section{
-    background-color: rgba(0, 0, 0, 0.06); 
-    border: solid #fde6d8 0.2px;
-    box-shadow: inset 0px 0px 10px 0px #2317c0,0px 0px 5px 0px #2317c0, 0px 20px 40px 0px #beb9ff2c;
+section{ 
+    border: transparent;
     z-index: 1;
+    background: transparent;
+}
+li{
+    border: transparent;
+    background: transparent;
+    margin: 10px;
 }
 @media (max-width:700px) {
     

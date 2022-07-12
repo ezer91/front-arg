@@ -32,8 +32,19 @@
         </button>
       </form>
     </div>
-
+    
     <H1 class="card-title m-2 mt-0">{{Persona.nombre}} {{Persona.apellido}}</H1>
-    <H5 class="m-2 mt-0">{{Persona.titulo}}</H5>
+      <br>    
+    <H6 class="m-2 mt-0" id="persona"><a type="button" class="" (click)="editarTitulo()"><a><i class="bi-pencil bi-solid"> {{Persona.titulo}}</i></a></a></H6>
+    <div *ngIf="formVisibility3">
+      <form (ngSubmit)="onSubmit3(Persona)">
+        <input type="text" [(ngModel)]="Persona.titulo" name="titulo" placeholder="nueva descripcion"
+          class="form-control">
+        <button type="submit" class="btn m-1 btn-primary">
+          Guardar titulo
+        </button>
+      </form>
+    </div>
+
   </div>
 </section>

@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   public personas:Persona[]=[];
   formVisibility:boolean = false;
   formVisibility2:boolean = false;
+  formVisibility3:boolean = false;
   public editPersona:Persona | undefined
  
 
@@ -63,6 +64,21 @@ onSubmit2(persona:Persona):void {
   })
 }
 
+onSubmit3(persona:Persona):void {
+  this.formVisibility3=false; //Cierra El Formulario
+  this.editPersona=persona;
+  document.getElementById('persona')?.click();
+  this.personaService.actualizar(persona).subscribe({
+    next: (response:Persona) => {
+      console.log(response);
+      this.verPersona()
+    },
+    error:(error:HttpErrorResponse)=>{
+      alert(error.message)
+    }
+  })
+}
+
 //Abre el formulario
 editarFoto(){
   console.log("funciona")
@@ -72,6 +88,10 @@ editarBanner(){
   console.log("funciona")
   this.formVisibility2=true;
 
+}
+
+editarTitulo(){
+  this.formVisibility3=true;
 }
 
 }
