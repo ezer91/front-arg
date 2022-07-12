@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Skills } from 'src/app/entities/skills';
 import { SkillsService } from 'src/app/services/skills.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-skills',
@@ -14,11 +15,13 @@ export class SkillsComponent implements OnInit {
   public skills:Skills[]=[];
   public editarSkills:Skills | undefined;
   public deleteSkills:Skills | undefined;
+  public visible: boolean = false
 
-  constructor(private skillsService:SkillsService ) { }
+  constructor(private skillsService:SkillsService,private tokenService:TokenService ) { }
 
   ngOnInit( ): void {
     this.obtenerSkills();
+    this.visibilidad();
   }
 
   public obtenerSkills():void{
@@ -32,10 +35,20 @@ export class SkillsComponent implements OnInit {
     });
   }
 
+  public visibilidad(){
+    if (this.tokenService.IsAdmin()){
+      this.visible= true;
+  }else{
+    this.visible= false;
+  }
+}
+
   public onOpenModal(mode:String, skills?: Skills):void{
     const container=document.getElementById('main-container');
     const button=document.createElement('button');
-    button.style.display='none';
+    if(!this.tokenService.IsAdmin()){
+    }else{
+      button.style.display='none';
     button.setAttribute('data-toggle','modal');
     if(mode==='add'){
       button.setAttribute('data-target','#addSkillsModal');
@@ -48,7 +61,7 @@ export class SkillsComponent implements OnInit {
     }
     container?.appendChild(button); 
     button.click();
-    console.log("llama a la funcion");
+    }
   }
 
   public onAddSkills(addForm: NgForm):void{

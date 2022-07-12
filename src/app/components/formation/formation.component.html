@@ -1,7 +1,7 @@
 <section class="card m-3 p-2">
     <div class="container-fluid">
-        <div class="row align-items-center">
-            <H2 class="col d-flex align-items-center justify-content-start m-2">Formacion</H2>
+        <div *ngIf="visible==true"class="row align-items-center">
+            <H2 class="col d-flex align-items-center justify-content-start m-2">Formación</H2>
             <a type="button"class="d-flex align-items-center justify-content-end col-1 m-3" (click)="onOpenModal('add')">
                 <i class="bi bi-plus-square"></i>
             </a>
@@ -16,8 +16,8 @@
                         <H2>{{Educacion.tituloEdu}}</H2>
                         <p>{{Educacion.fechaEdu}} {{Educacion.descEdu}}</p>
                     </div>
-                    <!--botones de edición-->
-                    <div class="col-2">
+                    <!--edición-->
+                    <div class="col-2" *ngIf="visible==true">
                         <a type="button" 
                         class="" 
                         (click)="onOpenModal('edit',Educacion)"
@@ -38,20 +38,14 @@
     
 </section>
 
-<!-- Modal añadir educacion-->
-<div class="modal fade" 
-id="addEducacionModal" 
-tabindex="-1" 
-role="dialog" 
-aria-labelledby="addEducacionModalLabel"
-aria-hidden="true"
->
+<!-- añadir-->
+<div class="modal fade" id="addEducacionModal" tabindex="-1"role="dialog" aria-labelledby="addEducacionModalLabel"aria-hidden="true">
 
 <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" >
             <div class="modal-header">
                 <h5 class="modal-title" id="addEducacionModalLabel">Añadir Educacion</h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                <button  type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"> &times;</span>
                 </button>
             </div>
@@ -97,16 +91,7 @@ aria-hidden="true"
 
 <!--editar modal-->
 
-<div 
-data-tonggle="modal"
-data-target="#editEducacionModal"
-class="modal fade" 
-id="editEducacionModal" 
-tabindex="-1" 
-role="dialog" 
-aria-labelledby="editEducacionModalLabel"
-aria-hidden="true"
->
+<div data-tonggle="modal"data-target="#editEducacionModal"class="modal fade" id="editEducacionModal"tabindex="-1" role="dialog" aria-labelledby="editEducacionModalLabel"aria-hidden="true">
 
 <div class="modal-dialog" role="document">
     <div class="modal-content">

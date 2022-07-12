@@ -16,12 +16,14 @@ li{
 }
 i{
     margin: 5px;
+    color: white;
 }
 
 #imgSkills{
     border-radius: 50%;
-    height:10%;
-    width:10%;
+    height:90px;
+    width:110px;
+    
 }
 @media (max-width:700px) {
     

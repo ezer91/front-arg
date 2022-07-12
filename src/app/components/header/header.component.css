@@ -50,3 +50,11 @@ section{
     color: white;
     font-style: bold;
 }
+.form-control{
+    width: 50%;
+}
+#editban
+form-control{
+    float: right;
+    width: 50%;
+}

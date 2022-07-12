@@ -4,7 +4,7 @@
             <H2 class="col d-flex align-items-center justify-content-start m-2">Experiencia</H2>
             <a type="button" class=" d-flex align-items-center justify-content-end col-1 m-2"
                 (click)="onOpenModal('add')">
-                <i class="bi bi-plus-square"></i>
+                <i *ngIf="visible==true" class="bi bi-plus-square"></i>
             </a>
         </div>
     </div>
@@ -18,8 +18,8 @@
                         <h2>{{Experiencia.tituloExp}}</h2>
                         <p>{{Experiencia.fechaExp}} - {{Experiencia.descExp}}</p>
                     </div>
-                    <!--botones de edición-->
-                    <div class="col-2">
+                    <!--edición-->
+                    <div class="col-2"*ngIf="visible==true" >
                         <a type="button" class="" (click)="onOpenModal('edit',Experiencia)">
                             <i class="bi-pencil bi-solid"></i>
                         </a>
@@ -34,7 +34,7 @@
 
 </section>
 
-<!-- Modal añadir experiencia-->
+<!--añadir experiencia-->
 <div class="modal fade" id="addExperienciaModal" tabindex="-1" role="dialog" aria-labelledby="addExperienciaModalLabel"
     aria-hidden="true">
 

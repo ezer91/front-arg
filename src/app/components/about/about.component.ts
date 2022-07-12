@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AcercaDe } from 'src/app/entities/acercaDe';
 import { AcercaDeService } from '../../services/acerca-de.service';
 import { __values } from 'tslib';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -15,12 +16,14 @@ export class AboutComponent implements OnInit {
   public acercaDe:AcercaDe[]=[]
   public formVisibility = false
   public editAcercaDe:AcercaDe | undefined
+  public visible:boolean = false
 
-  constructor(private AcercaDeService:AcercaDeService) { }
+  constructor(private AcercaDeService:AcercaDeService, private tokenService:TokenService) { }
  
 
   ngOnInit(): void {
     this.obtenerAcercaDe();
+    this.visibilidad();
   }
 
   public obtenerAcercaDe():void{
@@ -49,13 +52,23 @@ export class AboutComponent implements OnInit {
       })
   }
 
+  visibilidad() {
+    if (this.tokenService.IsAdmin()){
+      this.visible= true;
+    }else{
+      this.visible= false;
+    }
+  }
+
   editarTexto(){
-    console.log("llama a la funcion")
-    this.formVisibility=true;
+    if(this.tokenService.IsAdmin()){
+      this.formVisibility=true;
+      }else{
+        this.formVisibility=false;        
+      }
   }  
 
   cerrar(){
-    this.formVisibility=false;
-    
+     this.formVisibility=false;
   }
 }

@@ -16,6 +16,10 @@ li{
     margin: 10px;
     color: white;
 }
+i{
+    margin: 5px;
+    color: white;
+}
 @media (max-width:700px) {
     
     h2{

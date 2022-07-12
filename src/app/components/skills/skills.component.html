@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <H2 class="col d-flex align-items-center justify-content-start m-2">Hard & soft skills</H2>
             <a  type="button" class=" d-flex align-items-center justify-content-end col-1 m-2" (click)="onOpenModal('add')">
-                <i class="bi bi-plus-square"></i>
+                <i *ngIf="visible==true" class="bi bi-plus-circle"></i>
             </a>
         </div>
     </div>
@@ -18,14 +18,14 @@
                     <div class="col-9 m-2">
                         <p>{{Skills.porcentaje}}%</p>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-success align-items-center" role="progressbar"
+                            <div class="progress-bar progress-bar bg-danger bg-success align-items-center" role="progressbar"
                                 [style.width.%]="Skills.porcentaje" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <!--botones de edición-->
-                    <div class="col-2">
+                    <div *ngIf="visible==true"class="col-2">
                         <a type="button" class="" (click)="onOpenModal('edit',Skills)"><i class="bi-pencil bi-solid"></i></a>
-                        <a type="button" class="" (click)="onOpenModal('delete',Skills)"><i class="bi-x-square bi-solid"></i></a>
+                        <a type="button" class="" (click)="onOpenModal('delete',Skills)"><i class="bi-x-circle bi-solid"></i></a>
                     </div>
                 </div>
             </li>
@@ -33,7 +33,7 @@
     </div>
 </section>
 
-<!-- Modal añadir proyectos-->
+<!-- Añadir-->
 <div class="modal fade" id="addSkillsModal" tabindex="-1" role="dialog" aria-labelledby="addSkillsModalLabel"
     aria-hidden="true">
 
@@ -49,27 +49,27 @@
                 <form #addForm="ngForm" (ngSubmit)="onAddSkills(addForm)">
 
                     <div class="form-group">
-                        <label for="nombreSkill">Skill</label>
+                        <label for="nombreSkill">Habilidad hard o soft</label>
                         <input type="text" ngModel name="nombreSkill" class="form-control"
-                            aria-describedby="nombre de Skill" placeholder="Nombre del skill" required />
+                            aria-describedby="nombre" placeholder="Nombre de la habilidad" required />
                     </div>
                     <input type="hidden" ngModel name="idskill" class="form-control" placeholder="" />
                     <div class="form-group">
-                        <label for="fotoSkill">foto</label>
-                        <input type="text" ngModel name="fotoSkill" class="form-control" placeholder="url de la foto"
+                        <label for="fotoSkill">imagen/ logo</label>
+                        <input type="text" ngModel name="fotoSkill" class="form-control" placeholder="url de la imagen"
                             required />
                     </div>
                     <div class="form-group">
-                        <label for="porcentaje">nivel en porcentaje</label>
+                        <label for="porcentaje">nivel de conocimiento</label>
                         <input type="number" ngModel name="porcentaje" class="form-control"
-                            placeholder="nivel en porcentaje" />
+                            placeholder="porcentaje" />
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="add-skills-form" class="btn btn-secondary" data-dismiss="modal">
                             cerrar
                         </button>
                         <button [disabled]="addForm.invalid" type="submit" class="btn btn-Primary">
-                            Añadir Skill
+                            Agregar Habilidad
                         </button>
                     </div>
 

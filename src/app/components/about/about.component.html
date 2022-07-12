@@ -2,20 +2,24 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <H2 class="card-title d-flex align-items-center justify-content-start m-2 col">Sobre mi:</H2>
-            <a type="button" class=" d-flex align-items-center justify-content-end col-1 m-1 mb-1" (click)="editarTexto()">
-                <i class="bi-pencil bi-solid"></i>
+            <a  type="button" class=" d-flex align-items-center justify-content-end col-1 m-1 mb-1" (click)="editarTexto()">
+                <i *ngIf="visible==true" class=""id="boton"class="bi-pencil bi-solid"></i>
             </a>
         </div>
     </div>
     <div class="container-fluid" *ngFor="let AcercaDe of acercaDe">
-        <p class="card-text m-2 mt-0 d-flex align-items-center justify-content-start">{{AcercaDe.texto}}</p>   
+        <p class="card-text m-2 mt-0 d-flex align-items-center justify-content-start">
+            {{AcercaDe.texto}}
+        </p>   
 
     <div class="card mt-4" *ngIf="formVisibility" >
         <div class="card-body">
-            <div class="card-title"><a type="button" class="" (click)="cerrar()">
-                    <i class="bi bi-x-circle"></i>
+            <div class="card-title">
+                <a type="button" id="cerrarEditar" class="" (click)="cerrar()">
+                    <i class="bi bi-x-circle">
+                    </i>
                 </a>
-                Editar texto
+                Editar
             </div>
             <form (ngSubmit)="onSubmit(AcercaDe)">
                 <div class="form-group">

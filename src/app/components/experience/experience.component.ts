@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Experiencia } from 'src/app/entities/experiencia';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-experience',
@@ -14,11 +15,13 @@ export class ExperienceComponent implements OnInit {
   public experiencias:Experiencia[]=[];
   public editarExperiencia:Experiencia | undefined;
   public deleteExperiencia:Experiencia | undefined;
+  public visible:boolean = false
 
-  constructor(private experienciaService:ExperienciaService ) { }
+  constructor(private experienciaService:ExperienciaService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.obtenerExperiencia();
+    this.visibilidad();
   }
   public obtenerExperiencia():void{
     this.experienciaService.obtenerExperiencia().subscribe({
@@ -31,30 +34,39 @@ export class ExperienceComponent implements OnInit {
     });
   }
 
+  visibilidad() {
+    if (this.tokenService.IsAdmin()){
+      this.visible= true;
+    }else{
+      this.visible= false;
+    }
+  }
+
   public onOpenModal(mode:String, experiencia?: Experiencia):void{
     const container=document.getElementById('main-container');
     const button=document.createElement('button');
-    button.style.display='none';
-    button.setAttribute('data-toggle','modal');
-    if(mode==='add'){
-      button.setAttribute('data-target','#addExperienciaModal');
-    }else if(mode==='delete'){
-      this.deleteExperiencia=experiencia;
-      button.setAttribute('data-target','#deleteExperienciaModal');
-    }else if(mode==='edit'){
-      this.editarExperiencia=experiencia;
-      button.setAttribute('data-target','#editExperienciaModal');
+    if(!this.tokenService.IsAdmin()){
+    }else{
+      button.style.display='none';
+      button.setAttribute('data-toggle','modal');
+      if(mode==='add'){
+        button.setAttribute('data-target','#addExperienciaModal');
+      }else if(mode==='delete'){
+        this.deleteExperiencia=experiencia;
+        button.setAttribute('data-target','#deleteExperienciaModal');
+      }else if(mode==='edit'){
+        this.editarExperiencia=experiencia;
+        button.setAttribute('data-target','#editExperienciaModal');
+      }
+      container?.appendChild(button); 
+      button.click();
     }
-    container?.appendChild(button); 
-    button.click();
-    console.log("llama a la funcion");
   }
 
   public onAddExperiencia(addForm: NgForm):void{
     document.getElementById('add-experiencia-form')?.click();
     this.experienciaService.crearExperiencia(addForm.value).subscribe({
       next: (response:Experiencia) =>{
-        console.log(response);
         this.obtenerExperiencia();
         addForm.reset();
       },

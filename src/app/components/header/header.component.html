@@ -1,20 +1,23 @@
-<!--Encabezado -->
 <section class="card  m-3">
-  
+
   <div *ngFor="let Persona of personas" class="" id="datosPersonales">
-<img [src]="Persona.banner" class="m-2" alt="Programación Full Stack" id="banner">
-  <a type="button" id= "bannerEdit"class="" (click)="editarBanner()">
-    <a><i class="bi-pencil bi-solid"></i></a>
-  </a>
+    <img [src]="Persona.banner" class="m-2" alt="Programación Full Stack" id="banner">
+    <a *ngIf="visible==true" type="button" id="bannerEdit" class="" (click)="editarBanner()">
+      <a><i class="bi-pencil bi-solid"></i></a>
+    </a>
     <div class="borde">
-      <img [src]="Persona.fotoPerfil" id="FotoDePerfil" class="col-auto img-responsive rounded-circle"  alt="">
-      <a type="button" class="" (click)="editarFoto()">
+      <img [src]="Persona.fotoPerfil" id="FotoDePerfil" class="col-auto img-responsive rounded-circle" alt="">
+      <a *ngIf="visible==true" type="button" class="" (click)="editarFoto()">
         <a><i class="bi-pencil bi-solid"></i></a>
       </a>
     </div>
 
-    <!-- modal de edicion-->
+    <!-- Edicion-->
     <div *ngIf="formVisibility">
+      <a type="button" id="cerrarEditar" class="" (click)="close()">
+        <i class="bi bi-x-circle">
+        </i>
+      </a>
       <form (ngSubmit)="onSubmit(Persona)">
         <input type="text" [(ngModel)]="Persona.fotoPerfil" name="imagen" placeholder="URL de la imagen"
           class="form-control">
@@ -24,7 +27,11 @@
       </form>
     </div>
     <div *ngIf="formVisibility2">
-      <form (ngSubmit)="onSubmit2(Persona)">
+      <a type="button" id="cerrarEditar" class="" (click)="close()">
+        <i class="bi bi-x-circle">
+        </i>
+      </a>
+      <form id="editban" (ngSubmit)="onSubmit2(Persona)">
         <input type="text" [(ngModel)]="Persona.banner" name="banner" placeholder="URL de la imagen"
           class="form-control">
         <button type="submit" class="btn m-1 btn-primary">
@@ -32,14 +39,22 @@
         </button>
       </form>
     </div>
-    
     <H1 class="card-title m-2 mt-0">{{Persona.nombre}} {{Persona.apellido}}</H1>
-      <br>    
-    <H6 class="m-2 mt-0" id="persona"><a type="button" style="color: white" (click)="editarTitulo()"><a><i class="bi-pencil bi-solid"> {{Persona.titulo}}</i></a></a></H6>
+    <br>
+    <H6 class="m-2 mt-0" id="persona">
+      <a type="button" style="color: white" (click)="editarTitulo()">
+        <a><i *ngIf="visible==true" class="bi-pencil bi-solid"> </i>
+          {{Persona.titulo}}
+        </a>
+      </a>
+    </H6>
     <div *ngIf="formVisibility3">
+      <a type="button" id="cerrarEditar" class="" (click)="close()">
+        <i class="bi bi-x-circle">
+        </i>
+      </a>
       <form (ngSubmit)="onSubmit3(Persona)">
-        <input type="text" [(ngModel)]="Persona.titulo" name="titulo" placeholder="nueva descripcion"
-          class="form-control">
+        <input type="text" [(ngModel)]="Persona.titulo" name="titulo" placeholder="nuevo titulo" class="form-control">
         <button type="submit" class="btn m-1 btn-primary">
           Guardar titulo
         </button>

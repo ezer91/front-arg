@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Educacion } from 'src/app/entities/educacion';
 import { EducacionService } from 'src/app/services/educacion.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-formation',
@@ -14,12 +15,21 @@ export class FormationComponent implements OnInit {
   public educaciones:Educacion[]=[];
   public editarEducacion:Educacion | undefined;
   public deleteEducacion:Educacion | undefined;
+  public visible: boolean = false;
 
 
-  constructor(private educacionService:EducacionService ) { }
+  constructor(private educacionService:EducacionService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.obtenerEducacion();
+    this.visibilidad();
+  }
+  visibilidad() {
+    if (this.tokenService.IsAdmin()){
+      this.visible= true;
+    }else{
+      this.visible= false;
+    }
   }
 
   public obtenerEducacion():void{
@@ -36,6 +46,8 @@ export class FormationComponent implements OnInit {
     public onOpenModal(mode:String, educacion?: Educacion):void{
       const container=document.getElementById('main-container');
       const button=document.createElement('button');
+      if(!this.tokenService.IsAdmin()){
+      }else{
       button.style.display='none';
       button.setAttribute('data-toggle','modal');
       if(mode==='add'){
@@ -49,8 +61,9 @@ export class FormationComponent implements OnInit {
       }
       container?.appendChild(button); 
       button.click();
-      console.log("llama a la funcion");
     }
+    }
+
 
     public onAddEducacion(addForm: NgForm):void{
       document.getElementById('add-educacion-form')?.click();

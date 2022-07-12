@@ -21,32 +21,30 @@ section {
     min-height: 100vh;  
     align-items: center;  
     justify-content: center;  
-    background: linear-gradient(to bottom, #f7f7fe, #dff1ff);  
 }  
 section .colour {  
     position: absolute;  
     filter: blur(150px); 
-    background: #2b67f3;  
 }  
 section .colour:nth-child(1) {  
     top: -350px;  
     width: 600px;  
     height: 600px;  
-    background: #bf4ad4;  
+     
 }  
 section .colour:nth-child(2) {  
     left: 100px;  
     width: 500px;  
     height: 500px;  
     bottom: -150px;  
-    background: #ffa500;  
+    color: rgb(14, 13, 13);   
 }  
 section .colour:nth-child(3) {  
     right: 100px;  
     bottom: 50px;  
     width: 300px;  
     height: 300px;  
-    background: #2b67f3;  
+    color: rgb(14, 13, 13);   
 }  
 .box {  
     position: relative;  
@@ -145,6 +143,7 @@ section .colour:nth-child(3) {
     border-radius: 5px;
     justify-content: space-around;
     margin : 1rem;
+    color: white;
 }
 .card-body{
     padding: 1rem;
@@ -153,11 +152,12 @@ section .colour:nth-child(3) {
 .form .card-body .input__box {  
     width: 100%;  
     margin-top: 20px;  
+    color: white;
 }
 .form .card-body .input__box input {  
     
     width: 100%;  
-    color: rgb(5, 5, 5);  
+    color: rgb(14, 13, 13);  
     border: none;  
     outline: none;  
     font-size: 16px;  

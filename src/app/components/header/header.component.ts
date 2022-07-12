@@ -16,13 +16,15 @@ export class HeaderComponent implements OnInit {
   formVisibility:boolean = false;
   formVisibility2:boolean = false;
   formVisibility3:boolean = false;
-  public editPersona:Persona | undefined
+  public editPersona:Persona | undefined;
+  public visible: boolean = false
  
 
   constructor(private personaService:PersonaService, private tokenService: TokenService ) { }
 
   ngOnInit(): void {
     this.verPersona();
+    this.visibilidad();
   }
   public verPersona():void{
     this.personaService.verPersona().subscribe({
@@ -33,6 +35,14 @@ export class HeaderComponent implements OnInit {
         alert(error.message)
       }
     }); 
+  }
+
+  public visibilidad(){
+    if(this.tokenService.IsAdmin()){
+      this.visible= true;
+    }else{
+      this.visible= false;
+    }
   }
 
   onSubmit(persona:Persona):void {
@@ -77,6 +87,12 @@ onSubmit3(persona:Persona):void {
       alert(error.message)
     }
   })
+}
+
+close(){
+  this.formVisibility3=false;
+  this.formVisibility2=false;
+  this.formVisibility=false;
 }
 
 //Abre el formulario
