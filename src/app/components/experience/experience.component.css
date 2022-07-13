@@ -8,6 +8,11 @@ i{
     color:#e7e7e7;
     margin: 5px;
 }
+#formEd{
+    background: transparent;
+    border: transparent;
+    color: white;
+}
 @media (max-width:700px) {
     #logoExperiencia{
         width: 25%;

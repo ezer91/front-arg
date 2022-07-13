@@ -3,22 +3,6 @@
     height: 100px;
     object-fit: contain;
 }
-
-
-@media (max-width:800px) {
-    #imgEdu1{
-        width: 25%;
-        height: 25%;
-        object-fit: contain;
-    }
-    h2{
-        font-size: 18px;
-    }
-    p{
-        font-size: 12px;
-    }
-}
-
 section{
     border: transparent;
     z-index: 1;
@@ -39,3 +23,23 @@ i{
 #edit{
     margin: 10px;
 }
+#formEd{
+    background: transparent;
+    border: transparent;
+    color: white;
+}
+
+@media (max-width:800px) {
+    #imgEdu1{
+        width: 25%;
+        height: 25%;
+        object-fit: contain;
+    }
+    h2{
+        font-size: 18px;
+    }
+    p{
+        font-size: 12px;
+    }
+}
+

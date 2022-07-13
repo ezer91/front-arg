@@ -1,5 +1,4 @@
 <section class="card  m-3">
-
   <div *ngFor="let Persona of personas" class="" id="datosPersonales">
     <img [src]="Persona.banner" class="m-2" alt="Programación Full Stack" id="banner">
     <a *ngIf="visible==true" type="button" id="bannerEdit" class="" (click)="editarBanner()">
@@ -60,6 +59,5 @@
         </button>
       </form>
     </div>
-
   </div>
 </section>
