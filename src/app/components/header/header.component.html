@@ -38,12 +38,13 @@
         </button>
       </form>
     </div>
+    
     <H1 class="card-title m-2 mt-0">{{Persona.nombre}} {{Persona.apellido}}</H1>
     <br>
     <H6 class="m-2 mt-0" id="persona">
       <a type="button" style="color: white" (click)="editarTitulo()">
         <a><i *ngIf="visible==true" class="bi-pencil bi-solid"> </i>
-          {{Persona.titulo}}
+          <h5>{{Persona.titulo}}</h5>
         </a>
       </a>
     </H6>

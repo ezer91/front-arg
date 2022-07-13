@@ -1,9 +1,10 @@
 html, body { 
     height: 100%; 
+    
 }
 body {
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background: rgba(40, 40, 43);
+    background-color: rgba(40, 40, 43);
     border: transparent;
  }
