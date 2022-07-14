@@ -27,7 +27,11 @@ i{
     color: white;
 }
 @media (max-width:700px) {
-    
+
+    img{
+        height:60px;
+        width:60px;
+    }    
     h2{
         font-size: 18px;
     }
@@ -82,4 +86,16 @@ h2{
 
 h3{
     text-align: center;
+}
+
+img{
+    height:90px;
+    width:90px;
+}
+
+#i1{
+    float:left;
+}
+#i2{
+    float:right;
 }

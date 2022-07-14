@@ -8,10 +8,8 @@ import { Persona } from "../entities/persona";
 })
 export class PersonaService {
 
-    private apiServerUrl= 'http://localhost:8080'
-
-  //private apiServerUrl= 'https://serene-basin-54168.herokuapp.com'
-
+    private apiServerUrl= 'https://backendarg.herokuapp.com'
+    
   constructor(private http:HttpClient) { }
 
   public verPersona():Observable<Persona[]>{

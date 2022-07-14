@@ -9,10 +9,7 @@ import { TokenService } from './token.service';
 
 export class LoginGuard implements CanActivate {
 
-  constructor(
-    private tokenService: TokenService,
-    private router: Router
-  ) { }
+  constructor(private tokenService: TokenService,private router: Router) { }
   
   canActivate(
     route: ActivatedRouteSnapshot,

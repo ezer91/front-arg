@@ -11,9 +11,9 @@ import { JwtDto } from '../entities/jwtDto';
 })
 export class AutenticacionService {
 
-  private apiServerUrl= 'http://localhost:8080/auth/'
+  private apiServerUrl= 'https://backendarg.herokuapp.com/auth/'
 
-//https://serene-basin-54168.herokuapp.com/auth/
+
   constructor(private httpClient: HttpClient) { }
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
