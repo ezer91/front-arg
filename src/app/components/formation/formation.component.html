@@ -1,12 +1,12 @@
 <section class="card m-3 p-2">
     <div class="container-fluid">
-        <div *ngIf="visible==true" class="row align-items-center">
+        <div  class="row align-items-center">
             <H2 id="educ" class="col d-flex align-items-center justify-content-start m-2">
                 Formación
             </H2>
             <a type="button" class="d-flex align-items-center justify-content-end col-1 m-3"
                 (click)="onOpenModal('add')">
-                <i class="bi bi-plus-circle"></i>
+                <i *ngIf="visible==true"class="bi bi-plus-circle"></i>
             </a>
         </div>
     </div>
